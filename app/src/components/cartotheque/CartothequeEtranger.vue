@@ -75,7 +75,7 @@ defineEmits(['select-sub-category', 'close-sub-category'])
 
 /**
  * Met à jour la bbox dans le store
- * @param point 
+ * @param point
  */
 function goToPoint(point) {
   if (point.bboxMercator) {

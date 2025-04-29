@@ -129,7 +129,7 @@ const hasOtherLayers = computed(() => props.otherLayers.length > 0)
 
 /**
  * Gère le changement de la couche active
- * @param index 
+ * @param index
  */
 function handleLayerToggle(index) {
   const layer = props.otherLayers[index]
@@ -140,7 +140,7 @@ function handleLayerToggle(index) {
 
 /**
  * gère le changement d'option d'affichage
- * @param option 
+ * @param option
  */
 function handleOptionChange(option) {
   emit('display-option-change', {
@@ -155,7 +155,7 @@ function toggleExpand() {
 
 /**
  * Sélectionne une couche
- * @param index 
+ * @param index
  */
 function selectLayer(index) {
   if (index !== props.activeLayerIndex) {
@@ -166,7 +166,7 @@ function selectLayer(index) {
 
 /**
  * Gère le clic en dehors du sélecteur de couches
- * @param event 
+ * @param event
  */
 function handleClickOutside(event) {
   const layerSwitcher = document.querySelector('.layer-switcher')

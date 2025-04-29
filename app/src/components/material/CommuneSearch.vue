@@ -150,7 +150,7 @@ function searchCommunes() {
 
 /**
  * change la commune sélectionnée
- * @param commune 
+ * @param commune
  */
 function selectCommune(commune) {
   searchCommune.value = commune.nom

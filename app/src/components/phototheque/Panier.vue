@@ -150,7 +150,7 @@ const apacheURL = computed(() =>
 
 /**
  * Obtient l'URL de l'image à partir de l'élément
- * @param item 
+ * @param item
  */
 const getImageUrl = (item) => {
   if (item) {
@@ -178,7 +178,7 @@ const closeCartModal = () => {
 
 /**
  * suppression d'un élément du panier
- * @param index 
+ * @param index
  */
 const removeFromCart = (index) => {
   const itemToRemove = cartItems.value[index]
@@ -213,7 +213,7 @@ const downloadCartItems = () => {
 
 /**
  * Permet de visualiser une mission
- * @param item 
+ * @param item
  */
 const viewMission = (item) => {
   if (item) {
@@ -234,7 +234,7 @@ const viewMission = (item) => {
 
 /**
  * Permet de télécharger une photo
- * @param item 
+ * @param item
  */
 const downloadPhoto = (item) => {
   if (item) {

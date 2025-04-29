@@ -113,8 +113,8 @@ const projections = [
 
 /**
  * Récupère la bbox d'un point
- * @param longitude 
- * @param latitude 
+ * @param longitude
+ * @param latitude
  */
 function getPointBbox(longitude, latitude) {
   const bboxWGS84 = [longitude - 0.0001, latitude - 0.0001, longitude + 0.0001, latitude + 0.0001]

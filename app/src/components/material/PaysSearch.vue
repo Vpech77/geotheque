@@ -136,7 +136,7 @@ function searchCountries() {
 
 /**
  * Recupère le pays sélectionné
- * @param country 
+ * @param country
  */
 function selectCountry(country) {
   getCountryBbox(country)
@@ -182,7 +182,7 @@ function selectCountry(country) {
 
 /**
  * Récupère le contour du pays
- * @param country 
+ * @param country
  */
 async function getCountryBbox(country) {
   const countryCode = country.code

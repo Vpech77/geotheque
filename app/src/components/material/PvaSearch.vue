@@ -151,7 +151,7 @@ function searchPVA() {
 
 /**
  * Change la valeur de la mission sélectionnée
- * @param pva 
+ * @param pva
  */
 function selectPVA(pva) {
   pvaSelected.value = pva.nom

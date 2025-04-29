@@ -86,7 +86,7 @@ const textDisableOption = computed(() => {
 
 /**
  * genère une URL d'image à partir des informations de la carte
- * @param info 
+ * @param info
  */
 function generateImageUrl(info) {
   let name = ''
@@ -106,7 +106,7 @@ function generateImageUrl(info) {
 
 /**
  * génère une URL pour l'iipsrv à partir des informations de la carte
- * @param info 
+ * @param info
  */
 function getImageIppsrv(info) {
   let url = ''

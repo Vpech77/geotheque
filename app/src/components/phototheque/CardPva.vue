@@ -44,7 +44,7 @@ const hasPhotoInfo = computed(() => {
 
 /**
  * renvoie une chaîne formatée à partir de la clé
- * @param key 
+ * @param key
  */
 function formatLabel(key) {
   return key

@@ -264,7 +264,7 @@ const selectCommanditaire = (option) => {
 
 /**
  * permet de sélectionner un producteur
- * @param option 
+ * @param option
  */
 const selectProducteur = (option) => {
   formData.value.producteur = option
@@ -273,7 +273,7 @@ const selectProducteur = (option) => {
 
 /**
  * Met à jour la collection sélectionnée
- * @param selected 
+ * @param selected
  */
 const updateSelectedCollection = (selected) => {
   formData.value.collection = selected
@@ -281,7 +281,7 @@ const updateSelectedCollection = (selected) => {
 
 /**
  * Met à jour le support sélectionné
- * @param selected 
+ * @param selected
  */
 const updateSelectedSupport = (selected) => {
   formData.value.support = selected
@@ -289,7 +289,7 @@ const updateSelectedSupport = (selected) => {
 
 /**
  * Met à jour l'émulsion sélectionnée
- * @param selected 
+ * @param selected
  */
 const updateSelectedEmulsion = (selected) => {
   formData.value.emulsion = selected

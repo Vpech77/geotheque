@@ -150,7 +150,7 @@ function searchDepartements() {
 
 /**
  * Change le département sélectionnée
- * @param departement 
+ * @param departement
  */
 function selectDepartement(departement) {
   searchDepartement.value = departement.nom
