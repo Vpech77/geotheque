@@ -24,7 +24,7 @@ ou télécharger le zip et dézipper.
 
 ### 🐙 Lancement des services backend
 
-Aller à la racine du projet et lancer la commande suivante :
+- Aller à la racine du projet et lancer la commande suivante :
 
 ```
 sudo docker compose up -d
