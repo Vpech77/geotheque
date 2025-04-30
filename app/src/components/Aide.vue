@@ -30,7 +30,6 @@
 </template>
 
 <script setup>
-import svgIconVue from '@jamescoyle/vue-icon'
 import { mdiEmail, mdiPhone } from '@mdi/js'
 </script>
 
