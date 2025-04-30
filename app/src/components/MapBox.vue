@@ -21,7 +21,6 @@
       @draw-mode-activated="handleDrawModeActivated"
       @deactivate-draw-mode="handleDeactivateDrawMode"
     />
-    <CardPva v-if="showCardPva" :photoInfo="currentPhotoInfo" @close="closeCardPva" />
 
     <MapNavBar
       :coordinates="mouseCoordinates"
@@ -37,7 +36,6 @@ import SideMenu from './SideMenu.vue'
 import BasecardSwitcher from './BasecardSwitcher.vue'
 import VisibilitySwitch from './VisibilitySwitch.vue'
 import ZoomControl from './ZoomControl.vue'
-import CardPva from './phototheque/CardPva.vue'
 import { eventBus } from './composable/eventBus'
 import markerIcon from '@/assets/blue-marker.svg'
 import crossIcon from '@/assets/red-cross.svg'
@@ -85,12 +83,6 @@ import { getDistance } from 'ol/sphere'
 import { territoires } from './composable/getTerritoires'
 
 const mouseCoordinates = ref({ x: 0, y: 0 })
-
-const showCardPva = ref(false)
-
-function closeCardPva() {
-  showCardPva.value = false
-}
 
 const scanStore = useScanStore()
 const {
@@ -152,7 +144,6 @@ const clearAllLayersTA = () => {
   vectorLayers.value.geomMouseOver.getSource().clear()
   tab_emprise_photo = []
   last_geom = null
-  showCardPva.value = false
 }
 
 const vectorOtherLayers = ref(null)
@@ -220,7 +211,6 @@ watch(activeTab, (newValue) => {
   last_geom = null
   vectorLayers.value.geomMouseOver.getSource().clear()
   vectorLayers.value.geomCouple.getSource().clear()
-  showCardPva.value = false
 })
 
 const activeLayerIndex = ref(0)
@@ -300,11 +290,9 @@ function showPointOnEmprise(point, emprises) {
     })
 
     const geometry = polygon.getGeometry()
-    showCardPva.value = true
     scanStore.updateCurrentPhotoInfo(infosPva.value[alpha_selec])
     DrawEmpriseGeometry(geometry)
   } else {
-    showCardPva.value = false
     vectorLayers.value.geomMouseOver.getSource().clear()
   }
 }
