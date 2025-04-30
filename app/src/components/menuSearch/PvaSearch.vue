@@ -63,17 +63,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import SubCategoryHeader from './SubCategoryHeader.vue'
 import PhotothequeSubMenu from '@/components/phototheque/PhotothequeSubMenu.vue'
 import { useScanStore } from '@/components/store/scan'
-import { storeToRefs } from 'pinia'
 import { mdiMapSearchOutline, mdiAlertCircleOutline, mdiClose, mdiMagnify } from '@mdi/js'
 
 import config from '@/config'
 
 const scanStore = useScanStore()
-const { activeTab } = storeToRefs(scanStore)
 
 const emit = defineEmits(['close', 'select-commune'])
 
@@ -84,14 +82,6 @@ let searchTimeout = null
 const repPVA = ref(null)
 
 const url = ref('')
-
-const coucheGeoserverName = computed(() => {
-  if (activeTab.value === 'phototheque') {
-    return 'geotheque_mtd:pva'
-  } else {
-    return 'geotheque_mtd:pva'
-  }
-})
 
 const handleClickOutside = (event) => {
   const resultsWrapper = document.querySelector('.results-wrapper')
@@ -131,7 +121,7 @@ function searchPVA() {
   // requete pour l'autocomplétion du nom de la mission
   let search_url = ''
   searchTimeout = setTimeout(() => {
-    search_url = `${config.GEOSERVER_URL}&request=GetFeature&typeNames=${coucheGeoserverName.value}&outputFormat=application/json&CQL_FILTER=nom%20LIKE%20%27${query}%25%27&apikey=${config.APIKEY}`
+    search_url = `${config.GEOSERVER_URL}&request=GetFeature&typeNames=geotheque_mtd:pva&outputFormat=application/json&CQL_FILTER=nom%20LIKE%20%27${query}%25%27&apikey=${config.APIKEY}`
     fetch(search_url)
       .then((response) => response.json())
       .then((data) => {
@@ -155,7 +145,7 @@ function searchPVA() {
  */
 function selectPVA(pva) {
   pvaSelected.value = pva.nom
-  url.value = `${config.GEOSERVER_URL}&request=GetFeature&typeNames=${coucheGeoserverName.value}&outputFormat=application/json&CQL_FILTER=nom%20LIKE%20%27${pva.nom}%27&apikey=${config.APIKEY}`
+  url.value = `${config.GEOSERVER_URL}&request=GetFeature&typeNames=geotheque_mtd:pva&outputFormat=application/json&CQL_FILTER=nom%20LIKE%20%27${pva.nom}%27&apikey=${config.APIKEY}`
   repPVA.value = pva
   validatePVA()
   showResults.value = false
