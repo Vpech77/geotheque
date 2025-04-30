@@ -100,7 +100,7 @@
       <div class="info-pva">
         <Accordeon title="Infos PVA" defaultOpen>
           <div class="mission-card" v-if="Object.keys(currentPhotoInfo).length !== 0">
-            <div class="preview-details">
+            <div class="preview-details" :key="JSON.stringify(currentPhotoInfo)">
               <div
                 v-for="(val, key, index) in currentPhotoInfo"
                 :key="key"
@@ -474,7 +474,7 @@ function clickedFlyTo() {
 }
 
 .detail-label {
-  flex: 0 0 50%;
+  flex: 0 0 45%;
   font-weight: 500;
   color: #555;
   font-size: 11px;
