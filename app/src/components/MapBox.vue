@@ -482,7 +482,7 @@ async function parcour_tab_and_map(url) {
         }
 
         tab_emprise_photo.push([tab_points_cliche_3857, alphanum, [centrex_3857, centrey_3857]])
-        Add_new_name_to_map(alphanum)
+        // Add_new_name_to_map(alphanum)
       } else if (tab_test[i][0] == 'Couple Actif') {
         elem = tab_test[i]
         tab_points_couple_3857 = []
