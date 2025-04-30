@@ -52,9 +52,9 @@
 
 <script setup>
 import { watch } from 'vue'
-import CommuneSearch from '@/components/material/CommuneSearch.vue'
-import DepartementSearch from '@/components/material/DepartementSearch.vue'
-import PointSearch from '@/components/material/PointSearch.vue'
+import CommuneSearch from '@/components/menuSearch/CommuneSearch.vue'
+import DepartementSearch from '@/components/menuSearch/DepartementSearch.vue'
+import PointSearch from '@/components/menuSearch/PointSearch.vue'
 import { eventBus } from '@/components/composable/eventBus'
 import { useScanStore } from '@/components/store/scan'
 import { mdiCity, mdiMap, mdiCrosshairsGps, mdiMagnify } from '@mdi/js'

@@ -65,7 +65,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import SubCategoryHeader from '@/components/material/SubCategoryHeader.vue'
+import SubCategoryHeader from '@/components/menuSearch/SubCategoryHeader.vue'
 import CartothequeSubMenu from '@/components/cartotheque/CartothequeSubMenu.vue'
 import PhotothequeSubMenu from '@/components/phototheque/PhotothequeSubMenu.vue'
 import { useScanStore } from '@/components/store/scan'

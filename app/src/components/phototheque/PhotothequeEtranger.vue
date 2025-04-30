@@ -43,8 +43,8 @@ import { eventBus } from '@/components/composable/eventBus'
 import { useScanStore } from '@/components/store/scan'
 import { mdiCrosshairsGps, mdiLeaf } from '@mdi/js'
 
-import FeuilleSearch from '@/components/material/FeuilleSearch.vue'
-import PointSearch from '@/components/material/PointSearch.vue'
+import FeuilleSearch from '@/components/menuSearch/FeuilleSearch.vue'
+import PointSearch from '@/components/menuSearch/PointSearch.vue'
 
 const scanStore = useScanStore()
 

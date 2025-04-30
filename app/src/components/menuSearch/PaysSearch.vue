@@ -68,7 +68,6 @@ import CartothequeSubMenu from '@/components/cartotheque/CartothequeSubMenu.vue'
 import { mdiMapSearchOutline, mdiAlertCircleOutline, mdiClose, mdiMagnify } from '@mdi/js'
 import {
   create_multibbox,
-  convertBbox,
   createRealContour,
   getLongestSubArray,
   transformMultiPolygon,
