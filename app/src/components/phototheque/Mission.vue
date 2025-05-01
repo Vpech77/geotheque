@@ -96,27 +96,6 @@
           <button class="view-details-button" @click="openModal">Voir tous les détails</button>
         </div>
       </div>
-
-      <div class="info-pva">
-        <Accordeon title="Infos PVA" defaultOpen>
-          <div class="mission-card" v-if="Object.keys(currentPhotoInfo).length !== 0">
-            <div class="preview-details" :key="JSON.stringify(currentPhotoInfo)">
-              <div
-                v-for="(val, key, index) in currentPhotoInfo"
-                :key="key"
-                class="detail-item"
-                :style="{ 'animation-delay': `${index * 0.05}s` }"
-              >
-                <div class="detail-label">{{ key }}</div>
-                <div class="detail-value">{{ val }}</div>
-              </div>
-            </div>
-          </div>
-          <div v-else class="no-data">
-            Veuillez survolée avec la souris un cliché pour voir ses informations
-          </div>
-        </Accordeon>
-      </div>
     </div>
 
     <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
@@ -138,7 +117,6 @@ import { useScanStore } from '@/components/store/scan'
 import { storeToRefs } from 'pinia'
 import { downloadCSV } from '../composable/download'
 import ShakingButton from '@/components/material/ShakingButton.vue'
-import Accordeon from '../material/Accordeon.vue'
 import {
   mdiPlus,
   mdiMinus,
@@ -150,15 +128,8 @@ import {
 import config from '@/config'
 
 const scanStore = useScanStore()
-const {
-  storeScansData,
-  storeSelectedScan,
-  deletePhotoAllBool,
-  dicoUrlPhoto,
-  flyTo,
-  activeTab,
-  currentPhotoInfo,
-} = storeToRefs(scanStore)
+const { storeScansData, storeSelectedScan, deletePhotoAllBool, dicoUrlPhoto, flyTo, activeTab } =
+  storeToRefs(scanStore)
 
 const selectedMission = computed(() => storeSelectedScan.value?.properties)
 const missionName = computed(() => storeSelectedScan.value?.name)
@@ -474,7 +445,7 @@ function clickedFlyTo() {
 }
 
 .detail-label {
-  flex: 0 0 45%;
+  flex: 0 0 50%;
   font-weight: 500;
   color: #555;
   font-size: 11px;

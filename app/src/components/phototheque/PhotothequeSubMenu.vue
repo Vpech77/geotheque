@@ -1,25 +1,22 @@
 <template>
   <div>
-    <Accordion title="Critère de mission" defaultOpen>
+    <Accordeon title="Critère de mission" defaultOpen>
       <CritereSelection />
-    </Accordion>
+    </Accordeon>
 
-    <div class="mission">
-      <Accordion title="Mission" defaultOpen>
-        <Mission />
-      </Accordion>
-    </div>
+    <Accordeon title="Mission" defaultOpen>
+      <Mission />
+    </Accordeon>
+
+    <Accordeon title="Infos PVA" defaultOpen>
+      <InfosPva />
+    </Accordeon>
   </div>
 </template>
 
 <script setup>
-import Accordion from '@/components/material/Accordeon.vue'
+import Accordeon from '@/components/material/Accordeon.vue'
 import Mission from './Mission.vue'
 import CritereSelection from '../cartotheque/CritereSelection.vue'
+import InfosPva from './InfosPva.vue'
 </script>
-
-<style scoped>
-.mission {
-  margin-bottom: 100px;
-}
-</style>
