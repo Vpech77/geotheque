@@ -94,7 +94,6 @@ const {
   storeHoveredScan,
   deletePhotoAllBool,
   dicoUrlPhoto,
-  currentPhotoInfo,
   flyTo,
   selectedPhotos,
 } = storeToRefs(scanStore)
@@ -398,18 +397,6 @@ function afficheMasuqeEmpriseClique(name, i) {
   })
   dic_affiche_photos_clique[name] = polygon
   vectorLayers.value.geomPhoto.getSource().addFeature(polygon)
-}
-
-/**
- * Ajoute un nouveau nom à la carte
- * @param name
- */
-function Add_new_name_to_map(name) {
-  const feature_name = new Feature({
-    name: name,
-  })
-
-  vectorLayers.value.geomPhoto.getSource().addFeature(feature_name)
 }
 
 /**

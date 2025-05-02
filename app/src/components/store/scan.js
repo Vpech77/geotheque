@@ -21,14 +21,6 @@ export const useScanStore = defineStore('scan', () => {
   let supportOptions = ref([{ id: '0', name: 'Tous les supports' }])
   let emulsionOptions = ref([{ id: '0', name: 'Tous les emulsions' }])
 
-  let optionsCache = ref({
-    collection: null,
-    support: null,
-    emulsion: null,
-    commandita: null,
-    producteur: null,
-  })
-
   let flyTo = ref(false)
 
   const getCurrentTypeNames = () => {
@@ -298,7 +290,6 @@ export const useScanStore = defineStore('scan', () => {
       const options = [
         ...uniqueValues.map((value, index) => ({ id: String(index + 1), name: value })),
       ]
-      optionsCache.value[propertyName] = options
 
       return options
     } catch (error) {
@@ -401,7 +392,6 @@ export const useScanStore = defineStore('scan', () => {
     wkt,
     updateWKT,
     collectionsOptions,
-    fetchOptionsDropDown,
     supportOptions,
     emulsionOptions,
     fetchAllOptions,
@@ -411,7 +401,6 @@ export const useScanStore = defineStore('scan', () => {
     updateDicoUrlPhoto,
     getCommanditaireOptions,
     getProducteurOptions,
-    getFilteredOptions,
     storeHoveredScan,
     updateHoverScan,
     selectedPhotos,
