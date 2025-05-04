@@ -29,10 +29,16 @@ const layers = ref(layers_carto)
 const otherLayers = ref(otherLayersCartoFrance)
 const currentZoom = ref(5)
 const activeLayerIndex = ref(0)
+let map = null
 
 function changeActiveLayer(index) {
   activeLayerIndex.value = index
-  console.log(index)
+  const layerId = layers.value[index].id
+  map.getStyle().layers.forEach((layer) => {
+    if (map.getLayer(layer.id)) {
+      map.setLayoutProperty(layer.id, 'visibility', layer.id === layerId ? 'visible' : 'none')
+    }
+  })
 }
 
 function handleOtherLayerToggle(layer) {
@@ -44,7 +50,7 @@ function handleDisplayOptionChange({ option, value }) {
 }
 
 onMounted(() => {
-  const map = new maplibregl.Map({
+  map = new maplibregl.Map({
     container: 'map',
     // style: 'https://demotiles.maplibre.org/style.json',
     center: [2, 48],
@@ -64,7 +70,7 @@ onMounted(() => {
       id: layer.id,
       type: 'raster',
       source: layer.id,
-      layout: { visibility: layer.id === 'plan' ? 'visible' : 'none' }, // Par défaut, seule la première couche est visible
+      layout: { visibility: layer.id === 'plan' ? 'visible' : 'none' },
     })
   })
 })
