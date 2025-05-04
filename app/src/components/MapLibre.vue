@@ -2,7 +2,7 @@
   <div class="map-container">
     <SideMenu />
     <div id="map"></div>
-    <!-- <BasecardSwitcher
+    <BasecardSwitcher
       :layers="layers"
       :otherLayers="otherLayers"
       :activeLayerIndex="activeLayerIndex"
@@ -11,52 +11,61 @@
       @other-layer-toggle="handleOtherLayerToggle"
       @display-option-change="handleDisplayOptionChange"
     />
-    <ZoomControl />
-    <VisibilitySwitch @toggle-visibility="toggleLayerVisibility" />
-    <DrawControl
-      v-if="activeTab === 'phototheque'"
-      :map="olMap"
-      :isDrawModeActive="drawModeActive"
-      @draw-complete="handleDrawComplete"
-      @draw-mode-activated="handleDrawModeActivated"
-      @deactivate-draw-mode="handleDeactivateDrawMode"
-    />
-
-    <MapNavBar
-      :coordinates="mouseCoordinates"
-      @update:territory="handleTerritoryUpdate"
-      :territoryName="territoryData.name"
-    /> -->
   </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import SideMenu from './SideMenu.vue'
+import BasecardSwitcher from './BasecardSwitcher.vue'
+
+import { createWmtsLayers } from './composable/getBasemapLayers'
+
+import { layers_carto, otherLayersCartoFrance } from './composable/baseMap'
+
+const layers = ref(layers_carto)
+const otherLayers = ref(otherLayersCartoFrance)
+const currentZoom = ref(5)
+const activeLayerIndex = ref(0)
+
+function changeActiveLayer(index) {
+  activeLayerIndex.value = index
+  console.log(index)
+}
+
+function handleOtherLayerToggle(layer) {
+  console.log('handleOtherLayerToggle')
+}
+
+function handleDisplayOptionChange({ option, value }) {
+  console.log('handleDisplayOptionChange')
+}
 
 onMounted(() => {
   const map = new maplibregl.Map({
     container: 'map',
     // style: 'https://demotiles.maplibre.org/style.json',
-    center: [0, 0],
-    zoom: 1,
+    center: [2, 48],
+    zoom: 5,
   })
 
-  const url_plan = `https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&style=normal&layer=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&tilematrixset=PM&format=image/png&width=256&height=256&tilematrix={z}&tilerow={y}&tilecol={x}`
+  const wmtsLayers = createWmtsLayers(layers_carto)
 
-  map.addSource('wmtsSource', {
-    type: 'raster',
-    tiles: [url_plan],
-    tileSize: 256,
-  })
+  wmtsLayers.forEach((layer) => {
+    map.addSource(layer.id, {
+      type: 'raster',
+      tiles: [layer.url],
+      tileSize: 256,
+    })
 
-  map.addLayer({
-    id: 'wmtsLayer',
-    type: 'raster',
-    source: 'wmtsSource',
-    paint: {},
+    map.addLayer({
+      id: layer.id,
+      type: 'raster',
+      source: layer.id,
+      layout: { visibility: layer.id === 'plan' ? 'visible' : 'none' }, // Par défaut, seule la première couche est visible
+    })
   })
 })
 </script>
